@@ -1,12 +1,12 @@
-name: reloop-mcp
+name: mcp
 
 services:
   mcp:
     build:
       context: .
       dockerfile: Dockerfile
-    image: reloop-mcp:local
-    container_name: reloop-mcp
+    image: mcp:local
+    container_name: mcp
     ports:
       - "3000:3000"
     environment:

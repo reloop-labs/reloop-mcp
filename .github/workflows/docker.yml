@@ -24,7 +24,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME != '' && format('{0}/reloop-mcp', secrets.DOCKERHUB_USERNAME) || 'local/reloop-mcp' }}
+  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME != '' && format('{0}/mcp', secrets.DOCKERHUB_USERNAME) || 'local/mcp' }}
 
 jobs:
   build-and-push:
