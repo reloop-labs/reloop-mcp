@@ -78,5 +78,5 @@ jobs:
       - name: Trigger Coolify Deploy
         if: github.event_name != 'pull_request' && github.ref_type != 'tag'
         run: |
-          curl --fail -i -X POST "https://coolify.reloop.sh/api/v1/deploy?uuid=${{ secrets.COOLIFY_MCP_UUID }}&force=false" \
+          curl --fail -i -X POST "https://coolify.reloop.sh/api/v1/deploy?uuid=0x9z0cap542jwrhdpf7z3cev&force=false" \
             -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
