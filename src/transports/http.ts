@@ -15,6 +15,7 @@ import { SERVER_NAME, VERSION } from "../version";
 
 export const MCP_PATH = "/mcp";
 export const HEALTH_PATH = "/healthz";
+export const MCP_HEALTH_PATH = `${MCP_PATH}${HEALTH_PATH}`;
 
 export type HttpHandler = {
 	fetch(request: Request): Promise<Response>;
@@ -118,7 +119,10 @@ export function createHttpHandler(
 	}
 
 	const serve = async (request: Request, url: URL): Promise<Response> => {
-		if (request.method === "GET" && url.pathname === HEALTH_PATH) {
+		if (
+			request.method === "GET" &&
+			(url.pathname === HEALTH_PATH || url.pathname === MCP_HEALTH_PATH)
+		) {
 			return Response.json({
 				status: "ok",
 				name: SERVER_NAME,

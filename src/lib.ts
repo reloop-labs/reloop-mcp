@@ -14,5 +14,10 @@ export { createReloopApi } from "./reloop/api";
 export { createReloopServer } from "./server/create-server";
 export { tools } from "./tools/index";
 export type { HttpHandler } from "./transports/http";
-export { createHttpHandler, HEALTH_PATH, MCP_PATH } from "./transports/http";
+export {
+	createHttpHandler,
+	HEALTH_PATH,
+	MCP_HEALTH_PATH,
+	MCP_PATH,
+} from "./transports/http";
 export { SERVER_NAME, USER_AGENT, VERSION } from "./version";

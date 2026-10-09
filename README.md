@@ -5,7 +5,7 @@ The official [Model Context Protocol](https://modelcontextprotocol.io) server fo
 ## Transports
 
 - **stdio** — the client spawns the server as a child process and talks to it over stdin/stdout. Use this for local clients such as Claude Code, Claude Desktop, Cursor, and Codex. The key comes from `RELOOP_API_KEY`.
-- **Streamable HTTP** — one `POST /mcp` endpoint, stateless: no sessions, no sticky load balancing, horizontally scalable behind any load balancer. `GET /healthz` reports liveness. This is the production and hosted model, and each client sends its own API key on every request.
+- **Streamable HTTP** — one `POST /mcp` endpoint, stateless: no sessions, no sticky load balancing, horizontally scalable behind any load balancer. `GET /mcp/healthz` reports liveness (`GET /healthz` serves the same probe). This is the production and hosted model, and each client sends its own API key on every request.
 
 Legacy HTTP+SSE (two-endpoint transport) is not served.
 
@@ -60,7 +60,7 @@ docker run --rm -p 3000:3000 -e RELOOP_BASE_URL=https://mail.example.com reloop/
 ```
 
 ```bash
-curl -s http://127.0.0.1:3000/healthz
+curl -s http://127.0.0.1:3000/mcp/healthz
 ```
 
 ```json

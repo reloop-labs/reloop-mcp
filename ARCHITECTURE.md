@@ -23,7 +23,7 @@ The Reloop credential is not a property of the process, it is a property of the 
 
 ## Statelessness
 
-The HTTP transport runs `createMcpHandler(..., { legacy: "stateless" })`: no sessions, no server-side per-client state, no sticky routing. Any instance can serve any request, so scaling is a matter of adding replicas behind a plain load balancer. `GET /healthz` is the liveness probe.
+The HTTP transport runs `createMcpHandler(..., { legacy: "stateless" })`: no sessions, no server-side per-client state, no sticky routing. Any instance can serve any request, so scaling is a matter of adding replicas behind a plain load balancer. `GET /mcp/healthz` is the liveness probe (`GET /healthz` serves the same probe).
 
 ## Why its own HTTP client
 

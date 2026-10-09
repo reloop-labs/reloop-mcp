@@ -56,6 +56,22 @@ describe("health endpoint", () => {
 		await handler.close();
 	});
 
+	test("serves the same probe under the mcp base path", async () => {
+		const handler = handlerFor();
+		const response = await handler.fetch(
+			new Request("http://127.0.0.1/mcp/healthz", {
+				headers: { host: "127.0.0.1" },
+			}),
+		);
+		expect(response.status).toBe(200);
+		expect(await response.json()).toEqual({
+			status: "ok",
+			name: "reloop",
+			version: VERSION,
+		});
+		await handler.close();
+	});
+
 	test("echoes a valid incoming request id and replaces an invalid one", async () => {
 		const handler = handlerFor();
 		const echoed = await handler.fetch(
